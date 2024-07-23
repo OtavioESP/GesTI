@@ -1,6 +1,7 @@
 package com.example.api.domain.tarefa;
 
 
+import com.example.api.domain.status.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,9 +25,9 @@ public class Tarefa {
     private String titulo;
     private String descricao;
 
-//    @ManyToOne
-//    @JoinColumn(name = "status_id")
-//    private Status status;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private Status status;
 
     private Date validade;
 

@@ -1,9 +1,7 @@
 package com.example.api.domain.imagem;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.api.domain.tarefa.Tarefa;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +19,8 @@ public class Imagem {
         @GeneratedValue
         private Integer id;
         private String key;
+
+        @ManyToOne
+        @JoinColumn(name = "tarefa_id")
+        private Tarefa tarefa;
 }
