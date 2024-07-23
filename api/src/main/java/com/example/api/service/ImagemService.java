@@ -43,6 +43,7 @@ public class ImagemService {
         Imagem newImagem = new Imagem();
         newImagem.setKey(imgKey);
         newImagem.setTarefa(tarefa);
+        imagemRepository.save(newImagem);
 
         return newImagem;
     }

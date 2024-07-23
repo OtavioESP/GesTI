@@ -4,5 +4,5 @@ import com.example.api.domain.status.Status;
 
 import java.util.Date;
 
-public record TarefaRequestDTO(String titulo, String descricao, Integer status, Date validate) {
+public record TarefaRequestDTO(String titulo, String descricao, Integer statusId, Date validade) {
 }
