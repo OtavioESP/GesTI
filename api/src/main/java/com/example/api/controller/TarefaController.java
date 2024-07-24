@@ -21,8 +21,8 @@ public class TarefaController {
     private TarefaService tarefaService;
 
     @PostMapping
-    public ResponseEntity<Tarefa> createTarefa(@RequestBody TarefaRequestDTO body) {
-        Tarefa newTarefa = this.tarefaService.createTarefa(body);
+    public ResponseEntity<TarefaResponseDTO> createTarefa(@RequestBody TarefaRequestDTO body) {
+        TarefaResponseDTO newTarefa = this.tarefaService.createTarefa(body);
         return ResponseEntity.ok(newTarefa);
     }
 
@@ -36,5 +36,17 @@ public class TarefaController {
     public ResponseEntity<List<TarefaResponseDTO>> listAllTarefas() {
         List<TarefaResponseDTO> allTarefas = this.tarefaService.listAllTarefas();
         return ResponseEntity.ok(allTarefas);
+    }
+
+    @DeleteMapping("/{tarefaId}/delete")
+    public ResponseEntity<Void> deletarTarefa(@PathVariable UUID tarefaId, @RequestBody String adminKey) {
+        this.tarefaService.deletarTarefa(tarefaId, adminKey);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{tarefaId}")
+    public ResponseEntity<TarefaResponseDTO> alterarTarefa(@PathVariable UUID tarefaId, @RequestBody TarefaRequestDTO body) {
+        TarefaResponseDTO tarefa = this.tarefaService.alterarTarefa(tarefaId, body);
+        return ResponseEntity.ok(tarefa);
     }
 }
