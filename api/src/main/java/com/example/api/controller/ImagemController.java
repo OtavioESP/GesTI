@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/imagem")
+@RequestMapping("imagem")
 public class ImagemController {
-
 
     @Autowired
     private ImagemService imagemService;
@@ -23,4 +22,5 @@ public class ImagemController {
         Imagem newImagem = this.imagemService.createImagem(body);
         return ResponseEntity.ok(newImagem);
     }
+
 }
