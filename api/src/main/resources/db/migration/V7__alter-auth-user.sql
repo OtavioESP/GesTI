@@ -1,0 +1,14 @@
+ALTER TABLE auth_user RENAME COLUMN email TO login;
+ALTER TABLE auth_user RENAME COLUMN senha TO password;
+
+ALTER TABLE auth_user ALTER COLUMN id TYPE TEXT USING id::TEXT;
+
+ALTER TABLE auth_user ADD COLUMN role TEXT NOT NULL;
+
+ALTER TABLE auth_user ALTER COLUMN id SET NOT NULL;
+ALTER TABLE auth_user ADD CONSTRAINT id_unique UNIQUE (id);
+ALTER TABLE auth_user ALTER COLUMN login SET NOT NULL;
+ALTER TABLE auth_user ADD CONSTRAINT login_unique UNIQUE (login);
+ALTER TABLE auth_user ALTER COLUMN password SET NOT NULL;
+
+ALTER TABLE auth_user DROP COLUMN nome;
